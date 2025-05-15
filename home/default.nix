@@ -2,12 +2,18 @@
 {
 	home.username = "noelle";
 	home.homeDirectory = "/home/noelle";
-
+  
 	home.packages = with pkgs; [
 		neofetch
 		discord
-	];
 
+		qmk
+    qmk-udev-rules # the only relevant
+    qmk_hid
+    via
+    vial
+	];
+  
 	programs.zsh = {
 		enable = true;
 

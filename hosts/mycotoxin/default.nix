@@ -123,7 +123,7 @@ hardware.bluetooth.enable = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-programs.zsh.enable = true;
+  programs.zsh.enable = true;
 
 nix.settings.trusted-users = [ "root" "noelle" ];
 
@@ -132,40 +132,8 @@ nix.settings.trusted-users = [ "root" "noelle" ];
     isNormalUser = true;
     description = "Noelle Crawford";
     extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
-	shell = pkgs.zsh;
+	  shell = pkgs.zsh;
   };
-
-  users.users.vinay = {
-    isNormalUser = true;
-    description = "Vinay Patel";
-    extraGroups = [ "networkmanager" ];
-	shell = pkgs.zsh;
-  };
-
-/*home-manager.users.noelle = { pkgs, ...}: {
-  nixpkgs.config.allowUnfree = true;
-	home.packages = with pkgs; [
-		spotify
-		discord
-		slack
-		zotero
-		gimp
-		libreoffice
-		hexchat
-
-		# security
-		ghidra
-		pwndbg
-
-		prismlauncher
-
-		unzip
-		foliate
-
-
-	];
-	home.stateVersion = "24.05";
-};*/
 
 security.sudo.wheelNeedsPassword = false;
 
