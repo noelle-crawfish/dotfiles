@@ -4,14 +4,15 @@
 	home.homeDirectory = "/home/noelle";
   
 	home.packages = with pkgs; [
-		neofetch
 		discord
+		zotero
+    spotify
 
-		qmk
-    qmk-udev-rules # the only relevant
-    qmk_hid
-    via
-    vial
+		# qmk
+    # qmk-udev-rules # the only relevant
+    # qmk_hid
+    # via
+    # vial
 	];
   
 	programs.zsh = {
