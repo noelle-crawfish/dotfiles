@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # update flake.lock
-nix flake update
+# nix flake update
 
 # apply the updates
 sudo nixos-rebuild switch --flake .
