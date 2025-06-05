@@ -7,7 +7,8 @@
 		discord
 		zotero
     spotify
-
+    foliate
+    code-cursor
 		# qmk
     # qmk-udev-rules # the only relevant
     # qmk_hid
