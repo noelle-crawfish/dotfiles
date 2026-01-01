@@ -4,7 +4,7 @@
 # nix flake update
 
 # apply the updates
-sudo nixos-rebuild switch --flake .
+#  sudo nixos-rebuild switch --flake .
 
 # one cmd for both
-# sudo nixos-rebuild switch --flake .
+sudo nixos-rebuild switch --flake .

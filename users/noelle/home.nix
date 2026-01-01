@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, username, quickshell, astal, ... }:
 {
   # specialArgs = { inherit username; };
   imports = [
@@ -9,4 +9,6 @@
     userName = "Noelle Crawford";
     userEmail = "noellecrawfish@gmail.com";
   };
+
+  # services.quickshell.enable = true;
 }
