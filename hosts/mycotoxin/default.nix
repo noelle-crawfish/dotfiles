@@ -35,9 +35,16 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Enable ZeroTier
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = [ "76fc96e4987ba47a" ];
+  };
+
   boot.kernelModules = [ "snd-hda-intel" ];
   boot.extraModprobeConfig = ''
-    options snd-hda-intel power_save=0
+    options snd-hda-intel power_save=0 model=auto
+    options snd-hda-codec-* jack_detect=0
   '';
 
 # Enable docker
@@ -51,13 +58,6 @@ virtualisation.libvirtd = {
     package = pkgs.qemu_kvm;
     runAsRoot = true;
     swtpm.enable = true;
-    ovmf = {
-      enable = true;
-      packages = [(pkgs.OVMF.override {
-        secureBoot = true;
-        tpmSupport = true;
-      }).fd];
-    };
   };
 };
 
@@ -236,6 +236,13 @@ virtualisation.libvirtd = {
     fuzzel
 
     xwayland-satellite
+
+
+    wineWowPackages.stable
+    winetricks
+
+    ffmpeg
+    ffmpeg-full
   ];
 
 
@@ -280,9 +287,12 @@ fonts.packages = with pkgs; [
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
+services.tailscale.enable = true;
+networking.firewall.trustedInterfaces = [ "tailscale0" ];
+
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 8000 8001 ];
+  networking.firewall.allowedUDPPorts = [ 8000 8001 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

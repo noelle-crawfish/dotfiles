@@ -249,7 +249,7 @@ layout {
 // spawn-at-startup "alacritty" "-e" "fish"
 
 // TODO fix to use nix or whatever
-spawn-at-startup "quickshell" "--path /home/noelle/.config/quickshell/testing"
+spawn-at-startup "quickshell" "--path" "/home/noelle/.config/quickshell/testing"
 spawn-at-startup "xwayland-satellite"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -318,6 +318,11 @@ window-rule {
 window-rule {
     geometry-corner-radius 0
     clip-to-geometry false
+}
+
+window-rule {
+    match app-id="ltspice.exe"
+    open-fullscreen true
 }
 
 binds {
