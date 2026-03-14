@@ -1,10 +1,12 @@
-{ config, pkgs, pkgs-unstable, quickshell, ... }:
+{ config, pkgs, pkgs-unstable, quickshell, zen-browser, ... }:
 {
   imports = [
     ./programs/default.nix
   ];
 	home.username = "noelle";
 	home.homeDirectory = "/home/noelle";
+
+  programs.zen-browser.enable = true;
 
 	home.packages = with pkgs; [
 	  discord
@@ -17,6 +19,10 @@
     calibre
     digikam
 	  inkscape
+
+    freecad
+    kicad
+    ltspice
 
 	  qemu
 	  virt-manager
@@ -37,17 +43,32 @@
 
     quickshell.packages.${pkgs.system}.default
 
+    zen-browser
+    parsec-bin
+    zerotierone
+
   # ]) ++ [
 
-  blender
-  gtest
-  claude-code
+    blender
+    gtest
+    claude-code
+    warp-terminal
+    codex
+copilot-cli
 
 		# qmk
     # qmk-udev-rules # the only relevant
     # qmk_hid
     # via
     # vial
+
+    klayout
+    verilator
+    gtkwave
+    gnucap-full # or just gnucap???
+
+    # rcu # remarkable file manager
+    rmfuse
 	];
 
   xdg.configFile."niri/config.kdl".source = ./niri-config.kdl;
@@ -95,7 +116,7 @@
 			hy = "history";
 		};
 
-    initExtra = ''
+    initContent = ''
       eval "$(direnv hook zsh)"
     '';  
 	};
