@@ -84,7 +84,6 @@
         };
 
       trantor = let
-        username = "noelle";
         system = "x86_64-linux";
         pkgs-unstable = import nixpkgs-unstable {
           inherit system;
@@ -92,6 +91,7 @@
         };
       in
         nixpkgs.lib.nixosSystem {
+          inherit system;
           modules = [
             ./hosts/trantor
             ./modules/system.nix
@@ -100,8 +100,13 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.extraSpecialArgs = { inherit pkgs-unstable quickshell ; };
-              home-manager.users.noelle = import ./users/noelle/home.nix;
+              home-manager.extraSpecialArgs = { inherit pkgs-unstable quickshell zen-browser; };
+              home-manager.users.noelle = {
+                imports = [
+                  ./users/noelle/home.nix
+                  zen-browser.homeModules.beta
+                ];
+              };
             }
           ];
         };
