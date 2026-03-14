@@ -141,7 +141,7 @@ virtualisation.libvirtd = {
 
   programs.zsh.enable = true;
 
-nix.settings.trusted-users = [ "root" "noelle" ];
+  nix.settings.trusted-users = [ "root" "noelle" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.noelle = {
@@ -151,7 +151,7 @@ nix.settings.trusted-users = [ "root" "noelle" ];
 	  shell = pkgs.zsh;
   };
 
-security.sudo.wheelNeedsPassword = false;
+  security.sudo.wheelNeedsPassword = false;
 
 
   # Install firefox.

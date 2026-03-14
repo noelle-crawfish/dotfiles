@@ -10,21 +10,14 @@
 	  discord
 		zotero
     spotify
-    foliate
-	  darktable
-    doxygen
 
     calibre
-    digikam
 	  inkscape
 
 	  qemu
 	  virt-manager
-	  anki-bin
 
-    aider-chat
     drawio
-    gemini-cli
     libreoffice
     python312Packages.jupytext
     jupyter
@@ -42,6 +35,7 @@
   blender
   gtest
   claude-code
+    gemini-cli
 
 		# qmk
     # qmk-udev-rules # the only relevant

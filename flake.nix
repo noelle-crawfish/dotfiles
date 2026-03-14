@@ -51,6 +51,29 @@
 	          # { _module.args = { inherit inputs; };}
           ];
         };
+
+      trantor = let
+        username = "noelle";
+        system = "x86_64-linux";
+        pkgs-unstable = import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      in
+        nixpkgs.lib.nixosSystem {
+          modules = [
+            ./hosts/trantor
+            ./modules/system.nix
+
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.extraSpecialArgs = { inherit pkgs-unstable quickshell ; };
+              home-manager.users.noelle = import ./users/noelle/home.nix;
+            }
+          ];
+        };
     };
   #   nixosConfigurations.mycotoxin = nixpkgs.lib.nixosSystem {
   #     system = "x86_64-linux";
